@@ -4,13 +4,9 @@
       <img :src="anime.images.jpg.image_url" alt="Anime image" />
       <div class="details">
         <h3>{{ anime.title }}</h3>
-        <p :title="anime.synopsis" v-if="anime.synopsis">
-          {{ anime.synopsis.slice(0, 180) }}...
-        </p>
+        <p :title="anime.synopsis" v-if="anime.synopsis">{{ anime.synopsis.slice(0, 180) }}...</p>
         <span class="flex-1"></span>
-        <button class="button" @click="$emit('add', anime)">
-          Adicionar na lista
-        </button>
+        <button class="button" @click="$emit('add', anime)">Adicionar na lista</button>
       </div>
     </div>
   </div>

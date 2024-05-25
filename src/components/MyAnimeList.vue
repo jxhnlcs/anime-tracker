@@ -1,46 +1,26 @@
 <template>
   <div class="myanime">
     <h2>Meus animes</h2>
-    <p v-if="animes.length === 0" class="no-anime-message">
-      Nenhum anime adicionado na lista
-    </p>
+    <p v-if="animes.length === 0" class="no-anime-message">Nenhum anime adicionado na lista</p>
     <div v-for="anime in animes" :key="anime.id" class="anime">
       <img :src="anime.image" />
+
       <h3>{{ anime.title }}</h3>
+
       <button class="remove-button" @click="$emit('remove', anime)">x</button>
       <div class="flex-1"></div>
+
       <div class="episode-controls">
-        <span
-          class="status"
-          :class="{
-            completed: anime.watched_episodes === anime.total_episodes,
-            watching: anime.watched_episodes < anime.total_episodes,
-          }"
-        >
-          {{
-            anime.watched_episodes === anime.total_episodes
-              ? "Concluído"
-              : "Assistindo"
-          }}
-        </span>
-        <span class="episodes"
-          >{{ anime.watched_episodes }} / {{ anime.total_episodes }}</span
-        >
-        <button
-          v-if="anime.watched_episodes > 0"
-          @click="$emit('decrease', anime)"
-          class="button"
-        >
-          -
-        </button>
-        <button
-          v-if="anime.total_episodes !== anime.watched_episodes"
-          @click="$emit('increase', anime)"
-          class="button"
-        >
-          +
-        </button>
+
+        <span class="status" :class="{ completed: anime.watched_episodes === anime.total_episodes, watching: anime.watched_episodes < anime.total_episodes, }"> {{ anime.watched_episodes === anime.total_episodes ? "Concluído" : "Assistindo" }} </span>
+
+        <span class="episodes">{{ anime.watched_episodes }} / {{ anime.total_episodes }}</span>
+
+        <button v-if="anime.watched_episodes > 0" @click="$emit('decrease', anime)" class="button">-</button>
+
+        <button v-if="anime.total_episodes !== anime.watched_episodes" @click="$emit('increase', anime)" class="button">+</button>
       </div>
+      
     </div>
   </div>
 </template>

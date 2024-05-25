@@ -58,20 +58,22 @@ export default {
         .then((res) => res.json())
         .then((data) => {
           this.search_results = data.data;
+          console.log(this.search_results)
         });
     },
 
-    handleInput(e) {
-      if (!e.target.value) {
-        this.search_results = [];
-      }
-    },
+    // handleInput(e) {
+    //   if (!e.target.value) {
+    //     this.search_results = [];
+    //   }
+    // },
 
     updateQuery(newQuery) {
       this.query = newQuery;
     },
 
     addAnime(anime) {
+      console.log(anime)
       if (this.my_anime.some((a) => a.id === anime.mal_id)) {
         Swal.fire({
           position: "bottom-end",

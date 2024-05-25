@@ -1,11 +1,6 @@
 <template>
   <form @submit.prevent="$emit('search')">
-    <input
-      placeholder="Pesquise por um anime..."
-      :value="query"
-      @input="updateQuery"
-      type="text"
-    />
+    <input placeholder="Pesquise por um anime..." :value="query" @input="updateQuery" type="text"/>
     <button class="button" type="submit">Pesquisar</button>
   </form>
 </template>
